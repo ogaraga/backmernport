@@ -27,6 +27,8 @@ const setPost = ('/', async (req, res, next) => {
                 id: user._id
             }
             const token = JWT.sign(userPayload, jwtSecret);
+            user.token = token;
+            user.password = undefined;
             await user.save();
             return res.status(200).json({user, Token: token, }); 
 
