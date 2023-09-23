@@ -1,5 +1,4 @@
 const User = require('../model/Users');
-const JWT = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(10);
 
