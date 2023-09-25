@@ -1,19 +1,19 @@
 //importing packages
 const router = require('express').Router();
-const {setPost,getPost} = require('../controllers/register');
-const {login_get, login_post} = require('../controllers/login');
-const getPort = require('../controllers/portfolio');
+const {setPost, getPost, putPost, deletePost} = require('../controllers/controllerRegister');
+const { login_get, login_post, login_delete, login_put } = require('../controllers/controllerLogin');
+const getPort = require('../controllers/controllerPortfolio');
 
 //register routes
-router.post('/', setPost);
-router.get('/', getPost);
+router.get('/', getPost).post('/', setPost);
+router.put('/:_id', putPost).delete('/:_id', deletePost);
 
 //login routes
-router.post('/login', login_post);
-router.get('/login', login_get); 
+router.get('/login', login_get).post('/login', login_post);
+router.put('/login/:_id', login_put).delete('/login/:_id', login_delete);  
 
 
-//portfolio route and jwt token validation
+//portfolio route 
 router.get('/portfolio', getPort);
 
 module.exports = router;
